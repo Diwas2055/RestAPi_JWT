@@ -50,7 +50,7 @@ class TaskRepository
           $this->task = $this->task->where('id', $data['id']);
         }
         if ((isset($data['form_date']) && empty($data['form_date'])) || (isset($data['to_date']) && empty($data['to_date']))) {
-          $this->task  = $this->task->whereBetween('started_at', [$data['form_date'], $data['to_date']]);
+          $this->task  = $this->task->whereBetween('started_at', [$data['form_date'] ?? ' ', $data['to_date'] ?? ' ']);
         }
         return $this->task->get() ;
     }
